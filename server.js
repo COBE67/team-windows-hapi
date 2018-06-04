@@ -27,6 +27,14 @@ server.route({
 
 const init = async () => {
   
+  await server.register({
+    plugin: require('hapi-pino'),
+    options: {
+      prettyPrint: false,
+      logEvents: ['response']
+    }
+  });
+  
   await server.start();
   console.log(`Server running at: ${server.info.uri}`);
 };
